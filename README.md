@@ -1,17 +1,6 @@
 # Supplementary Information for FedIA
 
-This supplementary package provides the **Appendix** and **Code** necessary to ensure *completeness* and *reproducibility*.
-
-## Appendix
-
-- **FedIA.pdf**: Comprehensive version of the submission, including the main text, Appendix A, and Appendix B.  
-- **Appendix A**: Discusses **Privacy**, **Convergence**, and **Limitations & Future Work**.  
-- **Appendix B**: Details the **Experimental Setup** and **Performance Analysis**, covering:  
-  - Performance on the Twitch dataset  
-  - Performance on the WikiNet dataset  
-  - Comparison with FedSage using the GraphSage backbone  
-  - Ablation studies  
-  - Hyper-parameter configurations  
+This repository provided the CODE of paer named *FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification*.
 
 ## Code Installation
 
@@ -40,3 +29,22 @@ This supplementary package provides the **Appendix** and **Code** necessary to e
 To adjust the ratio of domains, edit the `domain_dict` variable in either:  
 - `datasets/twitch.py`  
 - `datasets/wikinet.py`
+
+---
+
+## Citation
+
+If you find this implementation useful, please cite the FedIA paper:
+
+```
+FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification
+```
+
+---
+
+## License
+
+This code is provided for academic research and reproducibility purposes.
+Please check the repository’s license file (if present) before redistribution.
+
+
