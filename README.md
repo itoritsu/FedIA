@@ -1,4 +1,4 @@
-# Supplementary Information for FedIA
+# FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification
 
 This repository provided the CODE of paer named *FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification*.
 
@@ -46,5 +46,6 @@ FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for 
 
 This code is provided for academic research and reproducibility purposes.
 Please check the repository’s license file (if present) before redistribution.
+
 
 
