@@ -37,7 +37,15 @@ To adjust the ratio of domains, edit the `domain_dict` variable in either:
 If you find this implementation useful, please cite the FedIA paper:
 
 ```
-FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification
+@misc{zhou2025fediaplugandplayimportanceawaregradient,
+      title={FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for Domain-Robust Federated Graph Learning on Node Classification}, 
+      author={Zhanting Zhou and KaHou Tam and Zeqin Wu and Pengzhao Sun and Jinbo Wang and Fengli Zhang},
+      year={2025},
+      eprint={2509.18171},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2509.18171}, 
+}
 ```
 
 ---
@@ -46,6 +54,7 @@ FedIA: A Plug-and-Play Importance-Aware Gradient Pruning Aggregation Method for 
 
 This code is provided for academic research and reproducibility purposes.
 Please check the repository’s license file (if present) before redistribution.
+
 
 
 
