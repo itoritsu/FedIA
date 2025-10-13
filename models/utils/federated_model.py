@@ -127,47 +127,35 @@ class FederatedModel(nn.Module):
                         self.avg_grad_history[cid][name] = (self.avg_grad_history[cid][name] * n + grad.clone()) / new_n
                     current_avg_grads[cid][name] = self.avg_grad_history[cid][name]
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             def generate_mask_from_avg_grad(avg_grad_dict, mask_ratio):
-                """
-                Generate a federated mask based on top percentage importance scores.
-                """
+                """Generate a federated mask based on top percentage importance scores."""
+
                 global_importance = {}
                 for name in avg_grad_dict[list(avg_grad_dict.keys())[0]]:
                     all_grads = [torch.abs(avg_grad_dict[cid][name]) for cid in avg_grad_dict]
                     global_importance[name] = torch.mean(torch.stack(all_grads), dim=0)
 
-                
-                all_values = torch.cat([v.flatten() for v in global_importance.values()])
-                threshold_index = int(len(all_values) * mask_ratio)
-                positions = torch.argsort(all_values, descending=True)  
+                total_elements = sum(v.numel() for v in global_importance.values())
+                if total_elements == 0 or mask_ratio <= 0:
+                    return {name: torch.zeros_like(importance) for name, importance in global_importance.items()}
 
-                
+                topk = max(1, int(total_elements * mask_ratio))
+                topk = min(topk, total_elements)
+
+                all_values = torch.cat([v.flatten() for v in global_importance.values()])
+                top_indices = torch.topk(all_values, k=topk, largest=True).indices
+
+                flat_mask = torch.zeros_like(all_values, dtype=torch.float32)
+                flat_mask[top_indices] = 1.0
+
                 mask = {}
                 start_idx = 0
                 for name, importance in global_importance.items():
                     num_elements = importance.numel()
-                    ranks = positions[start_idx: start_idx + num_elements].reshape(importance.shape)
-                    mask[name] = (ranks < threshold_index).float()
+                    mask[name] = flat_mask[start_idx: start_idx + num_elements].reshape(importance.shape)
                     start_idx += num_elements
 
                 return mask
-
             mask = generate_mask_from_avg_grad(current_avg_grads, self.args.mask_ratio)
 
             
